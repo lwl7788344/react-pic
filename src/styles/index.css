@@ -1,3 +1,5 @@
+
+
 html,body{
   width:100%;
   height:100%;
@@ -22,6 +24,8 @@ html,body{
   height:100%;
   background-color:#ddd;
   overflow:hidden;
+
+  perspective: 800px;
 }
 
 .controller-nav{
@@ -31,4 +35,86 @@ html,body{
   z-index:101;
   width:100%;
   text-align:center;
+}
+.controller-unit{
+  display: inline-block;
+  width:30px;
+  height:30px;
+  margin:0 5px;
+  text-align:center;
+  cursor:pointer;
+  background-color:#aaa;
+  border-radius:50%;
+  transform:scale(.5);
+  vertical-align:middle;
+  transition: transform 0.6s ease-in-out,background-color .3s;
+}
+/* 居中 */
+.controller-unit.is-center{
+  transform:scale(1);
+  background-color:#888;
+}
+.controller-unit.is-inverse{
+  background-color:#555;
+  transform:rotate(180deg);
+}
+.controller-unit.is-center::after{
+  color:#fff;
+  content: ">";
+  line-height: 30px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.img-figure{
+  width:320px;
+  height:360px;
+  margin:0;
+  padding:40px;
+  background-color:#fff;
+  box-sizing:border-box;
+  position:absolute;
+  transform-style:preserve-3d;
+  cursor:pointer;
+  transition:left 0.6s ease-in-out ,top .6s ease-in-out,transform .6s ease-in-out;
+  transform-origin:0 50% 0;
+  /*背面不可以见*/
+  backface-visibility:hidden;
+}
+/*反转*/
+.img-figure.is-inverse{
+  transform:translate(320px) rotateY(180deg) ;
+}
+
+.img-figure img{
+  width:100%;
+}
+figcaption{
+  text-align:center;
+}
+figcaption .img-title{
+  margin:20px 0 0 0;
+  color:#a7a0a2;
+  font-size:16px;
+}
+figcaption .img-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  padding: 50px 40px;
+  overflow: auto;
+
+  color: #a7a0a2;
+  font-size: 22px;
+  line-height: 1.25;
+  text-align: left;
+
+  background-color: #fff;
+
+  box-sizing: border-box;
+  transform: rotateY(180deg) translateZ(1px);
+  backface-visibility: hidden;
 }
